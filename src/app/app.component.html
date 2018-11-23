@@ -1,20 +1,204 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<header class="project-title">
+  <div class="project-icon">
+      <i class="material-icons">insert_chart_outlined</i>
+  </div>
+  <h1>Marketing Campaigns</h1>
+</header>
+<section class="subHeader">
+  <div class="addProject flexTwo">
+    <button class="addProjectButton" type="button" title="Add New project button">
+      Add Project
+    </button>
+  </div>
+  <div class="item flexOne">Status</div>
+  <div class="item flexTwo">Progress</div>
+  <div class="item flexOne">Dates</div>
+  <div class="item flexOne centered">Budget</div>
+  <div class="item flexOne centered">Priority</div>
+  <div class="item flexOne">
+    <div class="img-wrap-user-icon">
+        <i class="material-icons">person_outlined</i>
+    </div>
+  </div>
+</section>
+<main class="tasks-list">
+  <div class="task-item" *ngFor="let item of tasks">
+    <div class="desc flexTwo" (click)="openModal(item)">
+      <div class="task-icon" [ngClass]="item.taskIconColor">
+      <i class="material-icons">{{item.taskIcon}}</i>
+      </div>
+      <div class="name">
+        <h2>{{item.name}}</h2>
+        <div class="subtitle">
+          <h5>{{item.subtitle}}</h5>
+          <div class="circle" *ngIf="item.overdueTasks"></div>
+          <p class="overdue" *ngIf="item.overdueTasks">{{item.overdueTasks}} overdue tasks</p>
+        </div>
+      </div>
+    </div>
+    <div class="status flexOne">
+      <div class="circle" [ngClass]="item.status"></div>
+      <div class="stages">
+        <h4 class="onTrack-text" *ngIf="item.status === 'onTrack'">On Track</h4>
+        <h4 class="offTrack-text" *ngIf="item.status === 'offTrack'">Off Track</h4>
+        <h4 class="atRisk-text" *ngIf="item.status === 'atRisk'">At Risk</h4>
+        <p>{{item.lastUpdated}}</p>
+      </div>
+    </div>
+    <div class="progress-column flexTwo">
+      <div class="progress">
+        <div class="progress-bar" [ngStyle]="{'width' : item.progress + '%'}"></div>
+      </div>
+      <div class="percentage hai">{{item.progress}}%</div>
+    </div>    
+    <div class="dates hai flexOne">{{item.dateRange}}</div>
+    <div class="budget hai flexOne centered">${{item.budget}}</div>
+    <div class="priority flexOne">
+      <div class="priority-wrap" [ngClass]="item.priority">
+          <p [ngClass]="item.priority + '-text'">{{item.priority | titlecase }}</p>
+      </div>
+    </div>
+    <div class="user">
+      <div class="img-wrap">
+          <img [src]="item.avatarPath" alt="user image">
+      </div>
+    </div>
+  </div>
+</main>
+<div class="modal-wrap" *ngIf="showModal" (click)="closeModal($event, 'backDrop')">
+  <div class="modal ">
+    <div class="title">
+      <h1>{{newItem.name}}</h1>
+      <div class="project-exit">
+        <button class="go-project">Go to project</button>
+        <button class="close-btn" (click)="closeModal($event, 'closeBtn')">X</button>
+      </div>
+    </div>
+    <div class="story-wrap">
+      <div class="story-details">
+        <div class="story-status borderd">
+          <h4>Latest status</h4>
+          <a href="">Post status update</a>
+        </div>
+        <div class="story-description" [ngClass]="newItem.status + '-border'">
+          <div class="summary">
+            <div class="title-status">
+                <h2>Squash those bugs!</h2>
+                <div class="statusOf">
+                <div class="circle" [ngClass]="newItem.status"></div>
+                <h3 *ngIf="newItem.status === 'onTrack'">On Track</h3>
+                <h3 *ngIf="newItem.status === 'offTrack'">Off Track</h3>
+                <h3 *ngIf="newItem.status === 'atRisk'">At Risk</h3>
+                </div>
+            </div>
+            <div class="owner">
+              <div class="img-wrap">
+                  <img [src]="newItem.avatarPath" alt="owner of story">
+              </div>
+              <div class="name">{{newItem.owner}}</div> 
+              <div class="date">January 18</div>
+            </div>
+            <p>We found a few more bugs than expected during initial QA.
+              We're hoping this won't impact out timeline, but the team
+              is still considering out how ling it will take to fix 
+              each bug. Good news -- we build in some extra time to our plan!    
+            </p>
+          </div>
+          <div class="comment-section">
+            <div class="img-wrap">
+              <img src="../assets/user6.jpeg" alt="">
+            </div>
+            <input type="text" value="Write a comment...">
+          </div>
+          <div class="bottom-card">
+            <div class="followers">
+              <p>Followers</p>
+              <div class="img-wrap one spaced">
+                  <img src="../assets/user2.jpeg" alt="">
+              </div>
+              <div class="img-wrap spaced">
+                  <img src="../assets/user3.jpeg" alt="">
+              </div>
+              <div class="img-wrap spaced">
+                  <img src="../assets/user4.jpeg" alt="">
+              </div>
+              <div class="img-wrap spaced">
+                  <img src="../assets/user4.jpeg" alt="">
+              </div>
+            </div>
+            <div class="follow-updates">
+              <i class="material-icons">notification_important</i>
+              <a href="">Follow Status Update</a>
+            </div>
+          </div>
+        </div>
+        <div class="progress-details">
+          <h2>Progress</h2>
+          <div class="pbox-wrap">
+            <div class="p-box">
+              <div class="overdue">
+                <h2 class="nr">{{newItem.overdueTasks}}</h2>
+                <p>Overdue Tasks</p>
+              </div>
+              <div class="arrow">
+                <i class="material-icons">chevron_right</i>
+              </div>
+            </div>
+            <div class="p-box">
+              <div class="incomplete">
+                <h2 class="nr">{{newItem.incompleteTasks}}</h2>
+                <p>Incomplete Tasks</p>
+              </div>
+              <div class="arrow">
+                <i class="material-icons">chevron_right</i>
+              </div>
+            </div>
+            <div class="p-box">
+              <div class="completed">
+                <h2 class="nr">{{newItem.completedTasks}}</h2>
+                <p>Completed Tasks</p>
+              </div>
+              <div class="arrow">
+                <i class="material-icons">chevron_right</i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  
+      <div class="about-project">
+        <div class="borderd">About this project</div>
+        <p class="brief-desc">This is the <b>official project</b> of our New
+        mobile app launch. Research, design, development, QA
+        and usability testing will be tracked in this project.</p>
+        <div class="owner">
+          <div class="img-wrap">
+            <img [src]="newItem.avatarPath" alt="owner of story">
+          </div>
+          <div class="owner-name">
+            <p class="title">Owned by</p>
+            <p class="name">{{newItem.owner}}</p>
+          </div>
+        </div>
+        <div class="period">
+          <div class="calendar-circle">
+              <i class="material-icons calendar">calendar_today</i>
+          </div>
+          <div class="date-range">
+            <p class="title">Date range</p>
+            <p class="dates">Dec 1- Feb 4</p>
+          </div>
+        </div>
+        <div class="project-priority">
+          <p class="title">Priority</p>
+          <div class="priority">
+            <div class="priority-wrap" [ngClass]="newItem.priority">
+              <p [ngClass]="newItem.priority + '-text'">{{newItem.priority | titlecase }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 

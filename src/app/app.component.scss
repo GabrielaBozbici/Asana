@@ -1,0 +1,621 @@
+//colors:
+
+$black-russian: #151B26; //menu bck
+$mid-grey: #646F78; //menu items
+$clouds: #3B4049;//menu item selected - bck
+$grey-blue: #E0E6E8;//menu item selected- text color
+$caribbean: #00BF9C; // new tag
+
+//project-title-icon + 2nd line headers
+$dark-grey: #9CA6AF; 
+
+//add project button
+$deep-sky: #14AAF5;
+//project-colors
+$blue: #14AAF5;
+$green: #2CC6AB;
+$indigo: #7A68FF;
+$pink: #FE90AD;
+$orchid: #AB5DE6;
+$golden: #EFC400;
+.blue {
+    background-color: $blue;
+}
+.green {
+    background-color: $green;
+}
+.indigo {
+    background-color: $indigo;
+}
+.pink {
+    background-color: $pink;
+}
+.orchid {
+    background-color: $orchid;
+}
+.golden {
+    background-color: $golden;
+}
+$midnight: #222B37; //project name; project-title-text
+$light-grey: #848F99; //project type
+$radical-red: #ED4758; //overdue task
+
+//status-column
+$emerald: #5DD46A;// on track
+$green: #0E6401;//text
+$golden-yellow: #FADD01;//at risk
+$olive: #776900;//text
+$orange: #FF3F21;//off track
+$falu-red: #831F12;//text
+
+.onTrack {
+    background-color: $emerald;
+}
+.onTrack-text {
+    color: $green;
+}
+.onTrack-border {
+    border-top: 10px solid $emerald;
+}
+
+.offTrack {
+    background-color: $orange;
+}
+.offTrack-text {
+    color: $falu-red;
+}
+.offTrack-border{
+    border-top: 10px solid $orange;
+}
+
+.atRisk {
+    background-color: $golden-yellow;
+}
+.atRisk-text {
+    color: $olive;
+}
+.atRisk-border {
+    border-top: 10px solid $golden-yellow;
+}
+
+//progress-bar 
+$turquoise: #48E4E0;
+$azure: #EDF1F2;
+$hai: #86929B; //percentage
+.hai {
+    color: $hai;
+}
+// $light-grey: #848F99; status time
+
+//dates + budget text: $hai: #86929B;
+
+//priority-colors:
+$pattens-blue: #C5EDFF; //low bubble
+$allports: #0D608A;//low bubble text-color
+$bisque: #FFE3C5; //medium bubble
+$brown: #874407;//medium text color
+$cosmos: #FED6D1; //high -> text: $falu-red: #831F12;
+.low {
+    background-color: $pattens-blue;
+}
+.low-text {
+    color: $allports;
+}
+.medium {
+    background-color: $bisque;
+}
+.medium-text {
+    color: $brown;
+}
+.high {
+    background-color: $cosmos;
+}
+.high-text {
+    color: $falu-red;
+}
+
+//modal
+
+.overdue {
+    color: #F04251;
+}
+.incomplete {
+    color: #00A5F9;
+}
+.completed {
+    color: #02BF9A;
+}
+//header + subheader: $midnight: #222B37;
+//light blue in modal: $deep-sky: #14AAF5;
+
+.flexOne {
+    flex: 1;
+}
+
+.flexTwo {
+    flex: 2;
+}
+
+.centered {
+    text-align: center;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 20px;
+    -webkit-box-shadow: 0px 8px 30px 7px rgba(236,237,238,0.37);
+    -moz-box-shadow: 0px 8px 30px 7px rgba(236,237,238,0.37);
+    box-shadow: 0px 8px 30px 7px rgba(236,237,238,0.37);
+    h1 {
+        margin: 0;
+        padding: 10px;
+        font-size: 2rem;
+    }
+}
+.project-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: $dark-grey;
+    i {
+        color: #fff;
+    }
+}
+.addProjectButton {
+    background-color: $deep-sky;
+    border-color: transparent;
+    color: #FFFFFF;
+    font-weight: bold;
+    height: 2rem;
+    border-radius: 2px;
+}
+
+.subHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    .item {
+        color: $dark-grey;
+    }
+    .img-wrap-user-icon {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+main {
+    .task-item {
+        border-top: 1px solid #E0E6E8;
+        padding: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        .desc {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            & :hover {
+                cursor: pointer;
+            }
+            .task-icon {
+                width: 3.5em;
+                height: 3.5em;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 10px;
+                i {
+                    font-size: 40px;
+                    color: #fff;
+                }
+            }
+            .name {
+                margin-left: 15px;
+                h2 {
+                    color: $midnight;
+                    font-size: 1rem;
+                    margin: 0 0 20px 0;
+                }
+                .subtitle {
+                    display: flex;
+                    align-items: center;
+                    .circle {
+                        margin: 0 5px;
+                        width: 5px;
+                        height: 5px;
+                        border-radius: 50%;
+                        background-color: $light-grey;
+                    }
+                    h5 {
+                        margin: 0;
+                        color: $light-grey;
+                        font-size: 12px; 
+                    }
+                    p {
+                        font-size: 12px;
+                        margin: 0;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        .status {
+            display: flex;
+            align-items: flex-start;
+            .circle {
+                height: 15px;
+                width: 15px;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+            h4 {
+                font-size: 15px;
+                margin: 0;
+            }
+            p {
+                color: $light-grey;
+                font-size: 12px;
+                margin: 12px 0 0 0;
+            }
+        }
+        .dates, .budget {
+            flex: 1;
+        }
+        .progress-column {
+            display: flex;
+            .progress  {
+                width: 250px;
+                height: 15px;
+                background-color: #EDF1F2;
+                border-radius: 10px;
+                .progress-bar {
+                    background-color: #50ECDD;
+                    height: 15px;
+                    border-radius: 10px;
+                }
+            } 
+            .percentage {
+                margin-left: 10px;
+            } 
+        }
+        .priority {
+            display: flex;
+            justify-content: center;
+            .priority-wrap {
+                border-radius: 40px;
+                width: 80px;
+                padding: 7px 0;
+                text-align: center;
+                font-size: 12px;
+                p {
+                    margin: 0;
+                }
+            }
+        }
+        .user {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            .img-wrap {
+                height: 30px;
+                width: 30px;
+                border-radius: 50%;
+                overflow: hidden;
+                img {
+                    max-width: 100%;
+                }
+            }
+          }
+    }
+    
+}
+
+//user picture:
+.img-wrap {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    img {
+        max-width: 100%;
+    }
+}
+
+//border-bottom
+.borderd {
+    padding: 20px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid $grey-blue;
+}
+
+.hidden {
+    display: none;
+}
+
+.modal-wrap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.modal {
+    background-color: #fff;
+    padding: 30px;
+    width: 1000px;
+    margin-left: 7%;
+      .title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        h1 {
+            font-weight: normal;
+            font-size: 25px;
+            margin: 0;
+        }
+        .project-exit {
+            display: flex;
+            .go-project{
+                border: 1px solid $light-grey;
+                border-radius: 3px;
+                height: 30px;
+                color: $light-grey;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+            .close-btn {
+                border: none;
+                font-weight: bold;
+                font-size: 20px;
+                color: $light-grey;
+                margin-left: 15px;
+                &:hover {
+                    cursor: pointer;
+                    color: #14AAF5;
+                }
+            }
+        }
+      }
+      .story-wrap {
+        display: flex;
+        .story-details {
+            display: flex;
+            flex-direction: column;
+            margin-right: 60px;
+            .story-status {
+                display: flex;
+                justify-content: space-between;
+                h4 {
+                    font-weight: normal;
+                    margin: 0;
+                }
+                a {
+                    text-decoration: none;
+                    color: #14AAF6;
+                }
+            }
+            .story-description {
+                border-radius: 5px;
+                box-shadow: 0px 2px 4px 2px rgba(219,219,219,1);
+                -webkit-box-shadow: 0px 2px 4px 2px rgba(219,219,219,1);;
+                -moz-box-shadow: 0px 2px 4px 2px rgba(219,219,219,1);
+                .summary {
+                    margin: 10px 20px 0 20px;
+                    .title-status {
+                        display: flex;
+                        justify-content: space-between;
+                        h2 {
+                            font-size: 20px;
+                            font-weight: normal;
+                            margin: 0;
+                        }
+                        .statusOf {
+                            display: flex;
+                            align-items: center;
+                            .circle {
+                                border-radius: 50%;
+                                width: 15px;
+                                height: 15px;
+                                margin-right: 10px;
+                            }
+                            h3 {
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                    .owner {
+                        display: flex;
+                        align-items: center;
+                        margin: 5px 0;
+                        .name {
+                            margin: 0 10px;
+                            font-size: 14px;
+                            font-weight: bold;
+                        }
+                        .date {
+                            font-size: 14px;
+                            color: $light-grey;
+                        }
+                    }
+                    p {
+                        font-size: 14px;
+                        line-height: 30px;
+                    }
+                }
+                .comment-section {
+                    display: flex;
+                    border-bottom: 1px solid $grey-blue;
+                    input {
+                        margin-left: 20px;
+                        width: 100%;
+                        color: $light-grey;
+                        padding-left: 10px;
+                    }
+                }
+                .bottom-card {
+                    background-color: #F6F8F9;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    .followers {
+                        display: flex;
+                        align-items: center;
+                        p {
+                            font-size: 14px;
+                            color: $light-grey;
+                        }
+                        .one {
+                            margin-left: 10px;
+                        }
+                        .spaced {
+                            margin-left: 10px;
+                        }
+                    }
+                    .follow-updates {
+                        margin-right: 20px;
+                        display: flex;
+                        align-items: center;
+                        i {
+                            color: #14AAF6;
+                            margin-right: 10px;
+                        }
+                        a {
+                            font-size: 14px;
+                            text-decoration: none;
+                            color: #14AAF6;
+                        }
+                    }
+                }            
+                .comment-section, .followers {
+                    background-color: #F6F8F9;
+                    padding: 10px 20px;
+                }
+            }
+            .progress-details {
+                h2 {
+                    font-weight: normal;
+                    font-size: 1.3rem;
+                }
+                .pbox-wrap {
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .p-box {
+                    -webkit-box-shadow: 0px 0px 4px 0px rgba(219,219,219,1);
+                    -moz-box-shadow: 0px 0px 4px 0px rgba(219,219,219,1);
+                    box-shadow: 0px 0px 4px 0px rgba(219,219,219,1);
+                    border-radius: 5px;
+                    width: 25%;
+                    font-weight: bold;
+                    padding: 20px 10px 10px 10px;
+                    display: flex;
+                    justify-content: space-between;
+                    h2, p {
+                        margin: 0;
+                    }
+                    h2 {
+                        font-weight: bold;
+                    }
+                    p {
+                        font-size: 12px;
+                        margin-top: 5px;
+                    }
+                    .arrow {
+                        color: $grey-blue;
+                        display: flex;
+                        align-items: center;
+                    }
+                }
+            }
+        }
+        .about-project {
+            .brief-desc {
+                line-height: 30px;
+            }
+            .title {
+                font-size: 14px;
+                color: $light-grey;
+            }
+            .name, .dates {
+                font-size: 14px;
+            }
+            .owner {
+                margin-top: 20px;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                .owner-name {
+                    margin-left: 10px;
+                    p {
+                        margin: 0;
+                    }
+                }
+            }
+            .period {
+                margin-top: 20px;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                .calendar-circle{
+                    border: 1px solid $light-grey;
+                    border-radius: 50%;
+                    width: 30px;
+                    height: 30px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .calendar {
+                    font-size: 16px;
+                    color: $light-grey;
+                }
+                .date-range {
+                    margin-left: 10px;
+                    p {
+                        margin: 0;
+                    }
+                }
+            }
+            .project-priority {
+                margin-top: 20px;
+                display: flex;
+                align-items: center;
+                .title {
+                    margin-right: 30px;
+                }
+                .priority-wrap {
+                    border-radius: 40px;
+                    width: 80px;
+                    padding: 7px 0;
+                    text-align: center;
+                    font-size: 12px;
+                    p {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    } 
+}
+
+  
+  
+  
+
+
